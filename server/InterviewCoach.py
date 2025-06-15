@@ -24,7 +24,7 @@ class AIInterviewCoach:
 
     def analyse_question(self, question, answer):
         prompt = f"""Evaluate the following candidate answer to an interview question. The question was: 
-        "{question}". The answer is: "{answer}". {RESPONSE_TEMPLATES['answer_question'][0]}"""
+        "{question}". The answer is: "{answer}". {RESPONSE_TEMPLATES['analyse_question'][0]}"""
         try:
             response = self.model.generate_content(prompt)
             print(f"Generated response: {response.text.strip()}")
@@ -34,7 +34,7 @@ class AIInterviewCoach:
 
     def overrall_feedback(self, session_data):
         prompt = f"""Provide overall feedback on the interview session. The session data is: {session_data}. 
-        Focus on strengths and weaknesses, and suggest improvements. Keep the response concise."""
+        {RESPONSE_TEMPLATES['overall_feedback'][0]}"""
         try:
             response = self.model.generate_content(prompt)
             return response.text.strip()
