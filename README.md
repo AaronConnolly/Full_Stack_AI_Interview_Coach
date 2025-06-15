@@ -1,42 +1,65 @@
-# AI Interview Coach
-
-This project is an AI-powered mock interview simulation application. It features a frontend built with React and Vite, and a backend powered by FastAPI in Python. Users can configure interview parameters based on their needs and receive AI-driven analysis of their performance at the end of the interview.
-
 ## Project Overview
 
-The application guides the user through a simulated interview experience.
+The application provides an AI-powered mock interview simulation.
 
-1.  **Setup:** The user provides details such as their desired job field, the number of questions they want to be asked, their experience level, and specific skills to focus on.
-2.  **Interview:** The AI (simulated in the current version) asks questions one by one in a chatbot interface. The user responds to each question.
-3.  **Analysis:** After all questions are answered, the application presents an analysis page with AI feedback on each answer and overall insights into the user's performance.
-
-## Features
-
-*   Configurable interview sessions (job field, number of questions, etc.).
-*   Interactive chatbot interview interface.
-*   Storage of the complete question and answer transcript for each session.
-*   AI-powered analysis of the interview performance (currently simulated with placeholder logic).
-*   Results page displaying detailed feedback per question and overall.
-*   Backend built with FastAPI for API handling.
-*   Frontend built with React and Vite for a dynamic user interface.
-*   Configuration management using environment variables (`.env`).
+1.  **Setup:** Users begin by configuring interview parameters, including the desired job field, the number of questions they want to be asked, their experience level, and specific skills they wish to focus on.
+2.  **Interview:** Leveraging the power of Google Gemini, the AI generates relevant questions based on the user's setup and presents them one by one in a chatbot-style interface. The user provides their answers sequentially.
+3.  **Analysis:** Upon completing the interview (answering all requested questions), the application transitions to a results page. Here, the AI (powered by Google Gemini) provides a detailed analysis, including overall feedback on the user's performance and specific analysis for each question and the corresponding answer.
 
 ## Tech Stack
 
 *   **Frontend:** React, Vite
 *   **Backend:** Python, FastAPI
-*   **AI/NLP:** Planned integration with Large Language Models (LLMs) via API (currently simulated)
-*   **Data Storage:** In-memory dictionary (for demonstration, placeholder for a persistent database)
+*   **AI/NLP:** Google Gemini (via API)
+*   **Data Storage:** In-memory dictionary (for demonstration purposes)
 *   **Configuration:** `python-dotenv`, Pydantic
+
+
+## Project in Action
+
+Here are some screenshots showing the different stages of the AI Interview Coach application:
+
+---
+
+### 1. Interview Setup Page
+
+This is the initial page where users configure their interview settings, specifying details like job field and the number of questions.
+
+![Screenshot of the Interview Setup Page](client/public/Setup.png)
+
+---
+
+### 2. Interview Chat Interface
+
+This shows the user interacting with the AI, answering the generated interview questions.
+
+![Screenshot of the Interview Chat Interface](client/public/Interview.png)
+
+---
+
+### 3. Results Page: Overall Feedback
+
+A view of the summary analysis and general feedback provided by the AI after the interview.
+
+![Screenshot of the Results Page: Overall Feedback](client/public/Feedback.png)
+
+---
+
+### 4. Results Page: Question Breakdown
+
+This section shows the detailed analysis and feedback provided by the AI for each specific question and the user's answer.
+
+![Screenshot of Detailed Question Analysis](client/public/Breakdown.png)
+
+---
+
 
 ## Future Work
 
 The following features are planned to enhance the application:
 
-*   Full implementation of `interview_manager.py`, `ai_service.py`, and `data_manager.py`.
-*   Integration with an actual LLM API for question generation and sophisticated answer analysis.
-*   Implement persistent data storage (e.g., using SQLAlchemy and a database) instead of in-memory storage.
-*   Develop more detailed and structured AI analysis feedback.
-*   Improve the user interface and user experience.
-*   Add error handling and validation on both frontend and backend.
-*   Explore different interview types or formats.
+*   Implement persistent data storage (e.g., using SQLAlchemy and a database) instead of the current in-memory storage.
+*   Refine and enhance the detailed AI analysis feedback structure and content.
+*   Improve the user interface and user experience based on user testing and feedback.
+*   Add more robust error handling and input validation on both the frontend and backend.
+*   Explore options for different interview types or formats.
