@@ -4,7 +4,9 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional, Dict, Any # Import Dict and Any for flexible data structures
+from InterviewCoach import AIInterviewCoach
 
+coach = AIInterviewCoach()
 
 # --- Pydantic Models ---
 
@@ -75,26 +77,30 @@ def _generate_initial_questions(setup: InterviewSetup) -> List[str]:
     # In your actual ai_service.py or interview_manager.py:
     # - This would likely call the AI model or select from a question bank
     # - It should generate exactly setup.num_questions questions
-    print(f"Simulating question generation for: {setup}")
-    dummy_questions = [f"Question {i+1} for {setup.job_field}" for i in range(setup.num_questions)]
-    return dummy_questions
+    print(f"Question generation for: {setup}")
+    questions = []
+    for i in range(setup.num_questions):
+        question = coach.generate_question(setup.job_field)
+        questions.append(question)
+
+    return questions
 
 def _trigger_analysis(session_data: InterviewSessionData) -> Dict[str, Any]:
     """Simulates triggering the AI analysis process."""
     # In your actual ai_service.py:
     # - This would send the transcript and setup to the AI model for analysis
     # - It should return a structured dictionary of results
-    print(f"Simulating analysis for session: {list(memory_db.keys())[list(memory_db.values()).index(session_data)]}")
+    print(f"Analysis for session: {list(memory_db.keys())[list(memory_db.values()).index(session_data)]}")
     print("Transcript:", session_data.transcript)
     dummy_analysis = {
-        "overall_feedback": f"Good interview for {session_data.setup.job_field}!",
+        "overall_feedback": coach.overrall_feedback(session_data.transcript),
         "question_feedback": []
     }
     for i, qa in enumerate(session_data.transcript):
          dummy_analysis["question_feedback"].append({
              "question": qa.question,
              "user_answer": qa.answer,
-             "ai_feedback": f"AI feedback for answer to question {i+1} (e.g., needs more detail, good example)."
+             "ai_feedback": coach.analyse_question(qa.question, qa.answer)
          })
     return dummy_analysis
 
