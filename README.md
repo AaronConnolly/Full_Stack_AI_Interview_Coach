@@ -40,15 +40,9 @@ This shows the user interacting with the AI, answering the generated interview q
 ### 3. Results Page: Overall Feedback
 
 A view of the summary analysis and general feedback provided by the AI after the interview.
+Also a detailed analysis on each question and answer
 
 ![Screenshot of the Results Page: Overall Feedback](client/public/Feedback.png)
-
----
-
-### 4. Results Page: Question Breakdown
-
-This section shows the detailed analysis and feedback provided by the AI for each specific question and the user's answer.
-
 ![Screenshot of Detailed Question Analysis](client/public/Breakdown.png)
 
 ---
